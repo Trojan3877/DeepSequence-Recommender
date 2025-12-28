@@ -1,10 +1,15 @@
-# DeepSequence-Recommender Metrics
+Metrics
 
-## Model
-- MAP@10: TBD
-- Precision@10: TBD
-- Loss curve: logged via MLflow
+## Offline Metrics
+- MAP@10
+- NDCG@10
+- Recall@50
 
-## Pipeline
-- Test coverage: 75%+
-- API success rate: 100%
+## Online Metrics
+- P99 latency < 50ms
+- Cache hit rate
+- Error rate
+
+## Business Metrics
+- CTR uplift (A/B)
+- Retention delta
