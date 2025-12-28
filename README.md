@@ -1,99 +1,59 @@
 # DeepSequence-Recommender
 
-![CI](https://img.shields.io/github/actions/workflow/status/Trojan3877/DeepSequence-Recommender/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.10-blue)
-![MLflow](https://img.shields.io/badge/MLflow-tracking-orange)
-![FastAPI](https://img.shields.io/badge/FastAPI-ready-success)
-![Level](https://img.shields.io/badge/Engineering-L6%20ML%20System-purple)
+![PyTorch](https://img.shields.io/badge/pytorch-transformer-red)
+![CUDA](https://img.shields.io/badge/nvidia-cuda-green)
+![Kafka](https://img.shields.io/badge/apache-kafka-black)
+![FastAPI](https://img.shields.io/badge/fastapi-inference-brightgreen)
+![MLflow](https://img.shields.io/badge/mlflow-experiments-blueviolet)
+![Redis](https://img.shields.io/badge/redis-cache-red)
+![Prometheus](https://img.shields.io/badge/prometheus-monitoring-orange)
+![Grafana](https://img.shields.io/badge/grafana-dashboards-yellow)
+![Docker](https://img.shields.io/badge/docker-containerized-blue)
+![GitHub Actions](https://img.shields.io/badge/github-actions-success)
+![Engineering Level](https://img.shields.io/badge/engineering-L7-black)
 
-## Overview
 
-DeepSequence-Recommender is a production-ready sequence-based recommender system built using PyTorch.
+🚀 Overview
 
----
+DeepSequence-Recommender is a production-grade, transformer-based sequential recommendation system designed using Netflix-style ML systems principles.
 
-## Architecture
-┌───────────────────────┐
-│ User Interaction Data │
-└───────────┬───────────┘
-            ↓
-┌────────────────────────────┐
-│ Event Streaming (Kafka)    │
-└───────────┬───────────────┘
-            ↓
-┌────────────────────────────┐
-│ Feature Store (Offline)    │
-│  - User embeddings         │
-│  - Item embeddings         │
-└───────────┬───────────────┘
-            ↓
-┌────────────────────────────┐
-│ Sequence Model Training    │
-│  - LSTM / Transformer      │
-│  - GPU (CUDA)              │
-└───────────┬───────────────┘
-            ↓
-┌────────────────────────────┐
-│ Experiment Tracking        │
-│  - MLflow                  │
-│  - Metrics / Artifacts     │
-└───────────┬───────────────┘
-            ↓
-┌────────────────────────────┐
-│ Model Registry             │
-│  - Versioned Models        │
-└───────────┬───────────────┘
-            ↓
-┌────────────────────────────┐
-│ Online Inference Layer     │
-│  - FastAPI                 │
-│  - TorchScript / ONNX      │
-│  - Redis Cache             │
-└───────────┬───────────────┘
-            ↓
-┌────────────────────────────┐
-│ A/B Testing Layer          │
-│  - Control vs Treatment    │
-└───────────┬───────────────┘
-            ↓
-┌────────────────────────────┐
-│ Monitoring & Alerts        │
-│  - Prometheus              │
-│  - Grafana                 │
-└───────────┬───────────────┘
-            ↓
-┌────────────────────────────┐
-│ Client Applications        │
-│  - Web / Mobile / TV       │
-└────────────────────────────┘
+This project emphasizes:
 
-DeepSequence-Recommender/
-│
-├── app/
-│   ├── train.py
-│   ├── evaluate.py
-│   ├── infer_api.py
-│   └── recommender.py
-│
-├── data/
-│   ├── preprocessing.py
-│   └── dataset.py
-│
-├── mlflow/
-│   └── tracking.py
-│
-├── metrics.md
-├── dailylog.md
-├── contributing.md
-├── tests/
-│   ├── test_data.py
-│   ├── test_recommender.py
-│   └── test_api.py
-├── requirements.txt
-├── Dockerfile
-├── .github/workflows/ci.yml
-└── README.md  (LAST)
+Sequence modeling over static features
 
-Quick Start
-pip install -r requirements.txt
-uvicorn app.infer_api:app --reload
+Streaming-first ingestion
+
+Online experimentation
+
+Low-latency inference
+
+End-to-end ML system ownership
+
+This is not a demo model — it is a full ML platform blueprint.
+
+## Transformer-Based Recommender
+This system uses a sequence-aware Transformer model to learn temporal user-item interactions.
+
+## Real-Time Streaming (Kafka)
+User events are ingested via Apache Kafka to enable near-real-time personalization.
+
+## System Architecture
+(visual diagram here)
+
+## Evaluation
+Offline metrics (NDCG, Hit@K) and simulated online A/B testing.
+
+
+🧠 Model Architecture — Transformer Upgrade
+
+We replace LSTM-only models with a Transformer Encoder optimized for long user histories.
+
+Why Transformers?
+
+Better long-range dependency capture
+
+Parallelized training
+
+Production-proven at Netflix scale
+
