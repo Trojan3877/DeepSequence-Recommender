@@ -13,20 +13,60 @@ DeepSequence-Recommender is a production-ready sequence-based recommender system
 ---
 
 ## Architecture
+┌───────────────────────┐
+│ User Interaction Data │
+└───────────┬───────────┘
+            ↓
+┌────────────────────────────┐
+│ Event Streaming (Kafka)    │
+└───────────┬───────────────┘
+            ↓
+┌────────────────────────────┐
+│ Feature Store (Offline)    │
+│  - User embeddings         │
+│  - Item embeddings         │
+└───────────┬───────────────┘
+            ↓
+┌────────────────────────────┐
+│ Sequence Model Training    │
+│  - LSTM / Transformer      │
+│  - GPU (CUDA)              │
+└───────────┬───────────────┘
+            ↓
+┌────────────────────────────┐
+│ Experiment Tracking        │
+│  - MLflow                  │
+│  - Metrics / Artifacts     │
+└───────────┬───────────────┘
+            ↓
+┌────────────────────────────┐
+│ Model Registry             │
+│  - Versioned Models        │
+└───────────┬───────────────┘
+            ↓
+┌────────────────────────────┐
+│ Online Inference Layer     │
+│  - FastAPI                 │
+│  - TorchScript / ONNX      │
+│  - Redis Cache             │
+└───────────┬───────────────┘
+            ↓
+┌────────────────────────────┐
+│ A/B Testing Layer          │
+│  - Control vs Treatment    │
+└───────────┬───────────────┘
+            ↓
+┌────────────────────────────┐
+│ Monitoring & Alerts        │
+│  - Prometheus              │
+│  - Grafana                 │
+└───────────┬───────────────┘
+            ↓
+┌────────────────────────────┐
+│ Client Applications        │
+│  - Web / Mobile / TV       │
+└────────────────────────────┘
 
-```mermaid
-flowchart LR
-    DATA[User Interaction Data]
-    PREP[Sequence Preprocessing]
-    MODEL[LSTM Recommender Model]
-    TRAIN[Training Loop]
-    MFLOW[MLflow Tracking]
-    API[FastAPI Inference API]
-    CLIENT[Client App]
-
-    DATA --> PREP --> MODEL
-    MODEL --> TRAIN --> MFLOW
-    TRAIN --> API --> CLIENT
 DeepSequence-Recommender/
 │
 ├── app/
