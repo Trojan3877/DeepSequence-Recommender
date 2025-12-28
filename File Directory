@@ -1,41 +1,26 @@
-NetRecommender/
+DeepSequence-Recommender/
 │
-├── src/
-│   ├── data/
-│   │   ├── load_data.py
-│   │   └── preprocess.py
-│   │
-│   ├── models/
-│   │   ├── baseline_cf.py
-│   │   ├── neural_recommender.py
-│   │   └── embeddings.py
-│   │
-│   ├── evaluation/
-│   │   ├── metrics.py
-│   │   └── ranking_eval.py
-│   │
-│   ├── pipelines/
-│   │   ├── train_pipeline.py
-│   │   └── inference_pipeline.py
-│   │
-│   └── api/
-│       └── fastapi_app.py
+├── app/
+│   ├── train.py
+│   ├── evaluate.py
+│   ├── infer_api.py
+│   └── recommender.py
 │
-├── configs/
-│   ├── train_config.yaml
-│   └── model_config.yaml
+├── data/
+│   ├── preprocessing.py
+│   └── dataset.py
 │
-├── notebooks/
-│   └── model_experiments.ipynb
-│
-├── tests/
-│   ├── test_data.py
-│   ├── test_models.py
-│   └── test_api.py
+├── mlflow/
+│   └── tracking.py
 │
 ├── metrics.md
+├── dailylog.md
+├── contributing.md
+├── tests/
+│   ├── test_data.py
+│   ├── test_recommender.py
+│   └── test_api.py
 ├── requirements.txt
 ├── Dockerfile
-├── .dockerignore
-├── .gitignore
-└── README.md 
+├── .github/workflows/ci.yml
+└── README.md  (LAST)
