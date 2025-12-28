@@ -1,31 +1,10 @@
-# ============================================================
-#   NetRecommender Production Dockerfile
-#   L5/L6 ML Engineering Container
-# ============================================================
+FROM python:3.10
 
-# 1. Use official lightweight Python base image
-FROM python:3.10-slim
-
-# 2. Set working directory
 WORKDIR /app
 
-# 3. Install system dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    gcc \
-    && rm -rf /var/lib/apt/lists/*
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
-# 4. Copy requirement file first for caching
-COPY requirements.txt ./requirements.txt
-
-# 5. Install Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
-
-# 6. Copy entire project into container
 COPY . .
 
-# 7. Expose FastAPI port
-EXPOSE 8000
-
-# 8. Run the FastAPI server
-CMD ["uvicorn", "src.api.fastapi_app:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn","app.infer_api:app","--host","0.0.0.0","--port","8000"]
