@@ -1,10 +1,7 @@
-from metrixflow import MetricsTracker
+import numpy as np
 
-tracker = MetricsTracker(experiment_name="NetRecommender-Capstone")
-tracker.log_metrics({
-    "RMSE": 0.93,
-    "Precision@10": 0.81,
-    "Recall@10": 0.77,
-    "MAP": 0.69
-})
-tracker.save("tracking/metrics.md")
+def precision_at_k(preds, truth, k=10):
+    return len(set(preds[:k]) & set(truth[:k])) / k
+
+def mean_average_precision(preds, truth, k=10):
+    return np.mean([precision_at_k(p, t, k) for p, t in zip(preds, truth)])
