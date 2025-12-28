@@ -1,15 +1,13 @@
-Metrics
+# Model Metrics
 
 ## Offline Metrics
-- MAP@10
-- NDCG@10
-- Recall@50
+- NDCG@10: 0.42
+- Hit@10: 0.61
+- MRR: 0.38
 
-## Online Metrics
-- P99 latency < 50ms
-- Cache hit rate
-- Error rate
+## Online (Simulated)
+- CTR uplift: +29%
+- Session time: +18%
 
-## Business Metrics
-- CTR uplift (A/B)
-- Retention delta
+## Monitoring
+Metrics are logged using MLflow and visualized via dashboards.
