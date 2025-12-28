@@ -1,26 +1,27 @@
 DeepSequence-Recommender/
 │
-├── app/
-│   ├── train.py
-│   ├── evaluate.py
-│   ├── infer_api.py
-│   └── recommender.py
+├── src/
+│   ├── model/
+│   │   └── transformer.py
+│   ├── training/
+│   │   └── train.py
+│   ├── streaming/
+│   │   ├── kafka_producer.py
+│   │   └── kafka_consumer.py
+│   ├── api/
+│   │   └── app.py
 │
-├── data/
-│   ├── preprocessing.py
-│   └── dataset.py
+├── tests/
+│   └── test_model.py
 │
-├── mlflow/
-│   └── tracking.py
+├── docs/
+│   ├── TRANSFORMER.md
+│   ├── STREAMING.md
+│   ├── AB_TESTING.md
 │
 ├── metrics.md
 ├── dailylog.md
 ├── contributing.md
-├── tests/
-│   ├── test_data.py
-│   ├── test_recommender.py
-│   └── test_api.py
 ├── requirements.txt
 ├── Dockerfile
-├── .github/workflows/ci.yml
-└── README.md  (LAST)
+└── .github/workflows/ci.yml
