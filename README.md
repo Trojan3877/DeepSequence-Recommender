@@ -116,23 +116,22 @@ uvicorn src.api.fastapi_app:app --reload
 
 Run Tests
 pytest tests/
+ Design Questions & Reflections
 
-## Design Questions & Reflections
+Q: What problem does this project aim to solve?**  
+A: This project explores how well computer vision models can interpret human facial expressions, especially when the signal is ambiguous. The goal was not just classification accuracy, but understanding model behavior in uncertain conditions.
 
-**Q: What problem does this project aim to solve?**  
-A: 
+Q: Why did I choose this approach instead of alternatives?**  
+I chose a simple CNN-based approach with a clean pipeline so I could focus on evaluation and error analysis rather than architectural complexity. This made it easier to understand where failures came from.
 
-**Q: Why did I choose this approach instead of alternatives?**  
-A: 
+What were the main trade-offs I made?**  
+I prioritized clarity and interpretability over pushing for the highest accuracy. That meant fewer architectures tested, but deeper understanding of one system.
 
-**Q: What were the main trade-offs I made?**  
-A: 
+What didn’t work as expected?**  
+A: The model struggled with expressions that fell between emotional categories, which initially felt like a failure. Over time, I realized this reflected ambiguity in the data rather than a simple modeling issue.
 
-**Q: What didn’t work as expected?**  
-A: 
+What did I learn from building this?**  
+A: I learned that human-centered perception tasks often have hard limits, and careful evaluation matters more than headline metrics.
 
-**Q: What did I learn from building this?**  
-A: 
-
-**Q: If I had more time or resources, what would I improve next?**  
-A:
+If I had more time or resources, what would I improve next?**  
+I would design better uncertainty-aware outputs and more targeted evaluation tests for subtle expressions.
