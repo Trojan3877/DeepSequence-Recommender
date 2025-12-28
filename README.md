@@ -8,7 +8,6 @@
 ![Transformer](https://img.shields.io/badge/Model-Transformer-orange)
 ![LLM](https://img.shields.io/badge/LLM-Llama_3-purple)
 ![CUDA](https://img.shields.io/badge/NVIDIA-CUDA-green?logo=nvidia)
-![CI/CD](https://img.shields.io/github/actions/workflow/status/Trojan3877/DeepSequence-Recommender/ci.yml)
 ![License](https://img.shields.io/badge/License-MIT-success)
 ![Engineering](https://img.shields.io/badge/Engineering_Level-L7-purple)
 ![System Design](https://img.shields.io/badge/System_Design-Advanced-informational)
