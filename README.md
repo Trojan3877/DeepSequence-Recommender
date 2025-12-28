@@ -1,59 +1,86 @@
-# DeepSequence-Recommender
+# DeepSequence-Recommender 🚀
+> L7-Quality Transformer-Based Recommendation System with Streaming Ingestion
 
 ![Python](https://img.shields.io/badge/python-3.10-blue)
-![PyTorch](https://img.shields.io/badge/pytorch-transformer-red)
-![CUDA](https://img.shields.io/badge/nvidia-cuda-green)
-![Kafka](https://img.shields.io/badge/apache-kafka-black)
-![FastAPI](https://img.shields.io/badge/fastapi-inference-brightgreen)
-![MLflow](https://img.shields.io/badge/mlflow-experiments-blueviolet)
-![Redis](https://img.shields.io/badge/redis-cache-red)
-![Prometheus](https://img.shields.io/badge/prometheus-monitoring-orange)
-![Grafana](https://img.shields.io/badge/grafana-dashboards-yellow)
-![Docker](https://img.shields.io/badge/docker-containerized-blue)
-![GitHub Actions](https://img.shields.io/badge/github-actions-success)
-![Engineering Level](https://img.shields.io/badge/engineering-L7-black)
+![Docker](https://img.shields.io/badge/docker-ready-blue)
+![CI/CD](https://img.shields.io/github/actions/workflow/status/Trojan3877/DeepSequence-Recommender/ci.yml)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Status](https://img.shields.io/badge/engineering--level-L7-purple)
+![ML](https://img.shields.io/badge/ML-Transformer-orange)
+![Streaming](https://img.shields.io/badge/Streaming-Kafka-black)
 
+---
 
-🚀 Overview
+## 📌 Overview
+**DeepSequence-Recommender** is a production-style recommender system designed to model sequential user behavior using Transformer architectures.  
+It simulates **real-world Big Tech systems** used at companies like **Netflix, Amazon, TikTok, and Meta**.
 
-DeepSequence-Recommender is a production-grade, transformer-based sequential recommendation system designed using Netflix-style ML systems principles.
+Key capabilities:
+- Transformer-based sequential recommendation
+- Kafka-style streaming ingestion (mocked)
+- Research-style metrics & A/B testing
+- CI/CD automation
+- Clean modular design
 
-This project emphasizes:
+---
 
-Sequence modeling over static features
+## 🧠 System Architecture (AI-Generated Flowchart)
 
-Streaming-first ingestion
+User Events
+|
+v
++------------+
+| Kafka |
+| Producer |
++------------+
+|
+v
++------------+
+| Kafka |
+| Consumer |
++------------+
+|
+v
++--------------------+
+| Feature Pipeline |
++--------------------+
+|
+v
++--------------------+
+| Transformer Model |
+| (PyTorch) |
++--------------------+
+|
+v
++--------------------+
+| FastAPI Inference |
++--------------------+
+|
+v
+Recommendations
 
-Online experimentation
+## 🚀 Quick Start
 
-Low-latency inference
+### Prerequisites
+- Python 3.10+
+- Docker (optional)
+- NVIDIA GPU (optional for CUDA)
 
-End-to-end ML system ownership
+### Clone Repository
+```bash
+git clone https://github.com/Trojan3877/DeepSequence-Recommender
+cd DeepSequence-Recommender
+Install Dependencies
+pip install -r requirements.txt
 
-This is not a demo model — it is a full ML platform blueprint.
+Train Model
+python src/training/train.py
 
-## Transformer-Based Recommender
-This system uses a sequence-aware Transformer model to learn temporal user-item interactions.
+Run Streaming Consumer
+python src/streaming/kafka_consumer.py
 
-## Real-Time Streaming (Kafka)
-User events are ingested via Apache Kafka to enable near-real-time personalization.
+Launch API
+uvicorn src.api.fastapi_app:app --reload
 
-## System Architecture
-(visual diagram here)
-
-## Evaluation
-Offline metrics (NDCG, Hit@K) and simulated online A/B testing.
-
-
-🧠 Model Architecture — Transformer Upgrade
-
-We replace LSTM-only models with a Transformer Encoder optimized for long user histories.
-
-Why Transformers?
-
-Better long-range dependency capture
-
-Parallelized training
-
-Production-proven at Netflix scale
-
+Run Tests
+pytest tests/
