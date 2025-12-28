@@ -116,3 +116,23 @@ uvicorn src.api.fastapi_app:app --reload
 
 Run Tests
 pytest tests/
+
+## Design Questions & Reflections
+
+**Q: What problem does this project aim to solve?**  
+A: 
+
+**Q: Why did I choose this approach instead of alternatives?**  
+A: 
+
+**Q: What were the main trade-offs I made?**  
+A: 
+
+**Q: What didn’t work as expected?**  
+A: 
+
+**Q: What did I learn from building this?**  
+A: 
+
+**Q: If I had more time or resources, what would I improve next?**  
+A:
