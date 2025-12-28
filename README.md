@@ -24,6 +24,32 @@ Key capabilities:
 
 ---
 
+---
+
+# 🧠 TRANSFORMER TRAINING SKELETON
+📄 `src/model/transformer.py`
+```python
+import torch
+import torch.nn as nn
+
+class TransformerRecommender(nn.Module):
+    def __init__(self, num_items, embed_dim=128, num_heads=4):
+        super().__init__()
+        self.embedding = nn.Embedding(num_items, embed_dim)
+        self.transformer = nn.TransformerEncoder(
+            nn.TransformerEncoderLayer(
+                d_model=embed_dim,
+                nhead=num_heads
+            ),
+            num_layers=2
+        )
+        self.fc = nn.Linear(embed_dim, num_items)
+
+    def forward(self, x):
+        emb = self.embedding(x)
+        out = self.transformer(emb)
+        return self.fc(out[:, -1])
+
 ## 🧠 System Architecture (AI-Generated Flowchart)
 
 User Events
