@@ -1,13 +1,22 @@
 # DeepSequence-Recommender 🚀
 > L7-Quality Transformer-Based Recommendation System with Streaming Ingestion
-
-![Python](https://img.shields.io/badge/python-3.10-blue)
-![Docker](https://img.shields.io/badge/docker-ready-blue)
+![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python)
+![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue?logo=typescript)
+![Docker](https://img.shields.io/badge/Docker-Ready-blue?logo=docker)
+![FastAPI](https://img.shields.io/badge/FastAPI-Production-green?logo=fastapi)
+![Kafka](https://img.shields.io/badge/Kafka-Streaming-black?logo=apachekafka)
+![Transformer](https://img.shields.io/badge/Model-Transformer-orange)
+![LLM](https://img.shields.io/badge/LLM-Llama_3-purple)
+![CUDA](https://img.shields.io/badge/NVIDIA-CUDA-green?logo=nvidia)
 ![CI/CD](https://img.shields.io/github/actions/workflow/status/Trojan3877/DeepSequence-Recommender/ci.yml)
-![License](https://img.shields.io/badge/license-MIT-green)
-![Status](https://img.shields.io/badge/engineering--level-L7-purple)
-![ML](https://img.shields.io/badge/ML-Transformer-orange)
-![Streaming](https://img.shields.io/badge/Streaming-Kafka-black)
+![License](https://img.shields.io/badge/License-MIT-success)
+![Engineering](https://img.shields.io/badge/Engineering_Level-L7-purple)
+![System Design](https://img.shields.io/badge/System_Design-Advanced-informational)
+![Production](https://img.shields.io/badge/Production-Ready-brightgreen)
+![Streaming](https://img.shields.io/badge/Real--Time-Streaming-critical)
+![ML](https://img.shields.io/badge/Machine_Learning-Advanced-orange)
+
+
 
 ---
 
