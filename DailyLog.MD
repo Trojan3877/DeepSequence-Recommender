@@ -1,12 +1,13 @@
-# Daily Engineering Log
+# Engineering Log
 
 ## Day 1
-- Split train / inference
-- Added metrics functions
+- Implemented Transformer architecture
+- Validated dataset preprocessing
 
 ## Day 2
-- Added API & tests
+- Integrated Kafka ingestion
+- Simulated streaming pipeline
 
 ## Day 3
-- Integrated MLflow
-- Added CI/CD
+- Ran offline evaluation
+- Generated A/B testing report
