@@ -1,0 +1,9 @@
+{
+  "title": "Recommender System Dashboard",
+  "panels": [
+    { "title": "Request Rate", "type": "graph" },
+    { "title": "Latency (P95)", "type": "graph" },
+    { "title": "CTR", "type": "stat" },
+    { "title": "Experiment Lift", "type": "stat" }
+  ]
+}
