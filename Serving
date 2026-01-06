@@ -1,0 +1,7 @@
+serving/
+├── api_gateway.py
+├── grpc_server.py
+├── cache.py
+├── inference_pipeline.py
+├── schemas.py
+└── README.md
