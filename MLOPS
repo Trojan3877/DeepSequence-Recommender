@@ -1,0 +1,9 @@
+mlops/
+├── model_registry.py
+├── retrain_trigger.py
+├── training_pipeline.yaml
+├── drift_detection.py
+├── metrics_logger.py
+ci/
+├── github_actions.yml
+└── model_tests.py
