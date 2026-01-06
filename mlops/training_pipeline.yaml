@@ -1,0 +1,12 @@
+steps:
+  - name: preprocess
+    command: python features/offline_pipeline.py
+
+  - name: train
+    command: python ranking/train.py
+
+  - name: evaluate
+    command: python ranking/evaluate.py
+
+  - name: register
+    command: python mlops/model_registry.py
