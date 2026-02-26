@@ -147,3 +147,16 @@ class TrainingPipeline:
         print(f"\n[TrainPipeline] Training complete. Model saved → {save_path}")
 
         return model, preproc
+
+from evaluation.logger import EvaluationLogger
+from utils.config_loader import Config
+
+config = Config()
+sf_logger = EvaluationLogger(config["snowflake"])
+
+metrics = evaluate(y_test, predictions)
+
+sf_logger.log_metrics(
+    metrics=metrics,
+    model_version="v1.2.0-transformer"
+)
