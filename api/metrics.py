@@ -1,33 +1,23 @@
-from prometheus_client import Counter, Histogram
+from prometheus_client import Counter, Histogram, Gauge
 
-REQUEST_COUNT = Counter(
-    "api_requests_total",
-    "Total number of API requests"
-)
-
-REQUEST_LATENCY = Histogram(
-    "api_request_latency_seconds",
-    "Latency of API requests"
-)
-
-from prometheus_client import start_http_server
-from api.metrics import REQUEST_COUNT, REQUEST_LATENCY
-import time
-
-start_http_server(9000)
+REQUEST_COUNT = Counter("api_requests_total", "Total API Requests")
+REQUEST_LATENCY = Histogram("api_latency_seconds", "API Latency")
+ACTIVE_REQUESTS = Gauge("active_requests", "Active Requests")
 
 @app.post("/recommend")
 def recommend(sequence: list):
+
+    ACTIVE_REQUESTS.inc()
     REQUEST_COUNT.inc()
 
     start = time.time()
-    sequence = np.array(sequence).reshape(1, -1)
-    predictions = model.predict(sequence)
-    latency = time.time() - start
 
-    REQUEST_LATENCY.observe(latency)
+    try:
+        sequence = np.array(sequence).reshape(1, -1)
+        results = inference_pipeline(sequence)
+    finally:
+        latency = time.time() - start
+        REQUEST_LATENCY.observe(latency)
+        ACTIVE_REQUESTS.dec()
 
-    top_items = predictions.argsort()[0][-10:][::-1]
-    return {"recommendations": top_items.tolist()}
-
-http://localhost:9000/metrics
+    return {"recommendations": results}
