@@ -1,41 +1,20 @@
 DeepSequence-Recommender/
 │
 ├── api/
-│   └── main.py
-│
 ├── models/
-│   ├── transformer.py
-│   ├── sasrec.py
-│   └── grurec.py
-│
 ├── training/
-│   ├── trainer.py
-│   ├── dataset.py
-│   └── loss.py
-│
 ├── retrieval/
-│   ├── faiss_index.py
-│   └── candidate_generator.py
-│
 ├── rag/
-│   └── ragflow_integration.py
-│
-├── cpp_engine/
-│   ├── scorer.cpp
-│   ├── scorer.h
-│   └── bindings.py
-│
 ├── spark_pipeline/
-│   └── feature_pipeline.py
-│
+├── cpp_engine/
 ├── infra/
 │   ├── terraform/
 │   └── k8s/
 │
-├── ci/
-│   └── github_actions.yaml
+├── config/
+├── utils/
+├── tests/
 │
-├── Dockerfile
-├── docker-compose.yml
 ├── requirements.txt
-└── README.md
+├── Dockerfile
+└── .gitignore
