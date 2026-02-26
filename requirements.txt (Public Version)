@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+torch
+faiss-cpu
+numpy
+prometheus-client
