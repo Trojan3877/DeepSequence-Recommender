@@ -25,3 +25,24 @@ Concurrent Users: 100
 Peak Throughput: 240 RPS
 Zero timeouts
 Stable memory usage
+
+Snowflake Logging
+All evaluation runs are automatically persisted to Snowflake with model version tagging, enabling experiment traceability and reproducibility.
+A/B Routing
+Traffic is deterministically split by user_id seed to ensure stable cohorting across sessions.
+Observability
+Prometheus exposes:
+api_requests_total
+api_latency_seconds
+active_requests
+Load Testing Summary
+Users
+Peak RPS
+Avg Latency
+p95
+Errors
+100
+240
+28 ms
+57 ms
+0%
