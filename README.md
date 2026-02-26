@@ -1,14 +1,17 @@
-DeepSequence-Recommender
-
-![Python](https://img.shields.io/badge/Python-3.10-blue)
-![TensorFlow](https://img.shields.io/badge/TensorFlow-2.15-orange)
-![FAISS](https://img.shields.io/badge/FAISS-ANN-green)
-![Snowflake](https://img.shields.io/badge/Snowflake-DataWarehouse-blue)
-![PySpark](https://img.shields.io/badge/PySpark-Distributed-red)
-![Terraform](https://img.shields.io/badge/Terraform-IaC-purple)
-![Kubernetes](https://img.shields.io/badge/Kubernetes-Orchestration-blue)
-![C++](https://img.shields.io/badge/C++-Optimized-black)
-![CI/CD](https://img.shields.io/badge/CI/CD-GitHubActions-success)
+![Python](https://img.shields.io/badge/Python-3.10+-blue)
+![PyTorch](https://img.shields.io/badge/PyTorch-2.2-CUDA-orange)
+![CUDA](https://img.shields.io/badge/CUDA-12.1-green)
+![FAISS](https://img.shields.io/badge/FAISS-GPU-5C2D91)
+![FastAPI](https://img.shields.io/badge/FastAPI-Production-009688)
+![Snowflake](https://img.shields.io/badge/Snowflake-Experiment_Logging-29B5E8)
+![PySpark](https://img.shields.io/badge/PySpark-Distributed_Data-E25A1C)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-GPU_Deployment-326CE5)
+![Terraform](https://img.shields.io/badge/Terraform-IaC-623CE4)
+![Prometheus](https://img.shields.io/badge/Prometheus-Observability-E6522C)
+![Locust](https://img.shields.io/badge/Load_Testing-Locust-2F9E44)
+![A/B Testing](https://img.shields.io/badge/A/B_Testing-Deterministic-blueviolet)
+![CI/CD](https://img.shields.io/badge/CI/CD-GitHub_Actions-success)
+![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
 User → FastAPI → Redis Cache → FAISS Retrieval
        ↓
