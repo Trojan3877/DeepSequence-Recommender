@@ -1,29 +1,18 @@
 from fastapi import FastAPI
-import numpy as np
+from inference_pipeline_gpu import run_inference
+import torch
 
-from retrieval.candidate_generator import CandidateGenerator
-from models.transformer import TransformerRecommender
+app = FastAPI(title="DeepSequence GPU API")
 
-app = FastAPI(title="DeepSequence Recommender API")
-
-model = None
-candidate_generator = None
-
-
-@app.on_event("startup")
-def load_components():
-    global model
-    model = TransformerRecommender(
-        num_items=10000,
-        embedding_dim=64,
-        max_sequence_length=50
-    )
-    model.build()
+@app.get("/health")
+def health():
+    return {
+        "cuda_available": torch.cuda.is_available(),
+        "device": str(torch.cuda.get_device_name(0)) if torch.cuda.is_available() else "CPU"
+    }
 
 
 @app.post("/recommend")
 def recommend(sequence: list):
-    sequence = np.array(sequence).reshape(1, -1)
-    predictions = model.predict(sequence)
-    top_items = predictions.argsort()[0][-10:][::-1]
-    return {"recommendations": top_items.tolist()}
+    results = run_inference(sequence)
+    return {"recommendations": results}
