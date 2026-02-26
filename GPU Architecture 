@@ -1,0 +1,7 @@
+FastAPI
+   ↓
+GPU Transformer Model (PyTorch + CUDA)
+   ↓
+FAISS GPU Index
+   ↓
+C++ Re-ranker (optional)
