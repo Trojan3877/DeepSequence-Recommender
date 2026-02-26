@@ -95,3 +95,23 @@ class InferencePipeline:
     # ------------------------------------------------
     def batch_recommend(self, user_ids, top_k=10):
         return {uid: self.recommend(uid, top_k) for uid in user_ids}
+
+from retrieval.vector_store import VectorStore
+
+vector_store = VectorStore(
+    index_path="retrieval/index.faiss",
+    embedding_dim=64
+)
+user_embedding = model.model.layers[1](sequence).numpy().mean(axis=1)
+
+candidates = vector_store.retrieve(user_embedding, top_k=100)
+
+predictions = model.predict(sequence)
+
+reranked = sorted(
+    candidates,
+    key=lambda x: predictions[0][x],
+    reverse=True
+)
+
+return reranked[:10]
