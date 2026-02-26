@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deepsequence-gpu
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: deepsequence-gpu
+  template:
+    metadata:
+      labels:
+        app: deepsequence-gpu
+    spec:
+      containers:
+      - name: api
+        image: deepsequence-gpu:latest
+        resources:
+          limits:
+            nvidia.com/gpu: 1
+        ports:
+        - containerPort: 8000
