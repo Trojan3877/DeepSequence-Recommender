@@ -1,0 +1,7 @@
+active_model: "transformer_v1.2.0"
+
+models:
+  transformer_v1.2.0:
+    embedding_dim: 64
+    trained_on: "2026-02-26"
+    recall_at_10: 0.421
