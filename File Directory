@@ -1,42 +1,41 @@
 DeepSequence-Recommender/
+│
+├── api/
+│   └── main.py
+│
+├── models/
+│   ├── transformer.py
+│   ├── sasrec.py
+│   └── grurec.py
+│
+├── training/
+│   ├── trainer.py
+│   ├── dataset.py
+│   └── loss.py
+│
 ├── retrieval/
 │   ├── faiss_index.py
-│   ├── build_index.py
-│   └── ann_service.py
-├── ranking/
-│   ├── two_tower_model.py
-│   ├── transformer_ranker.py
-│   ├── train.py
-│   └── evaluate.py
-├── reranking/
-│   ├── diversity.py
-│   ├── freshness.py
-│   └── constraints.py
-├── features/
-│   ├── feature_definitions.py
-│   ├── offline_pipeline.py
-│   └── online_store.py
-├── serving/
-│   ├── api_gateway.py
-│   ├── grpc_server.py
-│   └── cache.py
-├── experiments/
-│   ├── ab_testing.py
-│   └── metrics_logger.py
-├── monitoring/
-│   ├── drift_detection.py
-│   ├── prometheus.yaml
-│   └── grafana_dashboard.json
-├── mlops/
-│   ├── training_pipeline.yaml
-│   ├── retrain_trigger.py
-│   └── model_registry.py
+│   └── candidate_generator.py
+│
+├── rag/
+│   └── ragflow_integration.py
+│
+├── cpp_engine/
+│   ├── scorer.cpp
+│   ├── scorer.h
+│   └── bindings.py
+│
+├── spark_pipeline/
+│   └── feature_pipeline.py
+│
 ├── infra/
-│   ├── Dockerfile
-│   ├── k8s/
-│   └── terraform/
+│   ├── terraform/
+│   └── k8s/
+│
 ├── ci/
-│   └── github_actions.yml
-├── metrics.md
-├── README.md   ← **DELIVERED LAST**
-└── LICENSE
+│   └── github_actions.yaml
+│
+├── Dockerfile
+├── docker-compose.yml
+├── requirements.txt
+└── README.md
