@@ -1,66 +1,53 @@
-# src/evaluation/metrics.py
-
 import numpy as np
 
 
-def precision_at_k(recommended_items, true_items, k=10):
+def recall_at_k(y_true, y_pred, k=10):
     """
-    Precision@K = (# of recommended items in top K that are relevant) / K
+    y_true: list of true item ids
+    y_pred: list of predicted ranked item lists
     """
-    recommended_k = recommended_items[:k]
-    relevant = set(recommended_k).intersection(set(true_items))
-    return len(relevant) / k
+    recalls = []
+
+    for true_item, pred_items in zip(y_true, y_pred):
+        pred_k = pred_items[:k]
+        recalls.append(int(true_item in pred_k))
+
+    return np.mean(recalls)
 
 
-def recall_at_k(recommended_items, true_items, k=10):
+def precision_at_k(y_true, y_pred, k=10):
+    precisions = []
+
+    for true_item, pred_items in zip(y_true, y_pred):
+        pred_k = pred_items[:k]
+        precisions.append(int(true_item in pred_k) / k)
+
+    return np.mean(precisions)
+
+
+def ndcg_at_k(y_true, y_pred, k=10):
     """
-    Recall@K = (# of relevant items in top K) / (# of relevant items total)
+    Normalized Discounted Cumulative Gain
     """
-    recommended_k = recommended_items[:k]
-    relevant = set(recommended_k).intersection(set(true_items))
-    return len(relevant) / max(len(true_items), 1)
+    ndcgs = []
+
+    for true_item, pred_items in zip(y_true, y_pred):
+        dcg = 0.0
+        for i, item in enumerate(pred_items[:k]):
+            if item == true_item:
+                dcg = 1 / np.log2(i + 2)
+                break
+
+        idcg = 1.0  # Only 1 relevant item
+        ndcgs.append(dcg / idcg)
+
+    return np.mean(ndcgs)
 
 
-def hit_rate_at_k(recommended_items, true_items, k=10):
-    """
-    Hit Rate@K = 1 if ANY relevant item is in top K, else 0
-    """
-    recommended_k = set(recommended_items[:k])
-    return 1 if recommended_k.intersection(set(true_items)) else 0
+def hit_rate_at_k(y_true, y_pred, k=10):
+    hits = []
 
+    for true_item, pred_items in zip(y_true, y_pred):
+        hits.append(int(true_item in pred_items[:k]))
 
-def dcg_at_k(scores, k=10):
-    """
-    Discounted Cumulative Gain
-    """
-    scores = np.asfarray(scores)[:k]
-    return np.sum(scores / np.log2(np.arange(2, len(scores) + 2)))
-
-
-def ndcg_at_k(recommended_items, true_items, k=10):
-    """
-    NDCG@K = DCG@K / IDCG@K
-    """
-    # 1 for relevant, 0 for non-relevant
-    relevance = [1 if item in true_items else 0 for item in recommended_items]
-
-    dcg = dcg_at_k(relevance, k)
-    ideal_relevance = sorted(relevance, reverse=True)
-    idcg = dcg_at_k(ideal_relevance, k)
-
-    return dcg / idcg if idcg > 0 else 0.0
-
-
-def average_precision_at_k(recommended_items, true_items, k=10):
-    """
-    Mean Average Precision@K (MAP@K)
-    """
-    score = 0.0
-    hits = 0
-
-    for idx, item in enumerate(recommended_items[:k]):
-        if item in true_items:
-            hits += 1
-            score += hits / (idx + 1)
-
-    return score / max(min(len(true_items), k), 1)
+    return np.mean(hits)
