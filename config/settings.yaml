@@ -1,0 +1,20 @@
+training:
+  batch_size: 128
+  epochs: 10
+  learning_rate: 0.001
+  embedding_dim: 64
+  max_sequence_length: 50
+
+model:
+  type: "transformer"
+
+retrieval:
+  top_k: 50
+  faiss_index_path: "retrieval/index.faiss"
+
+snowflake:
+  account: "YOUR_ACCOUNT"
+  user: "YOUR_USER"
+  warehouse: "COMPUTE_WH"
+  database: "RECOMMENDER_DB"
+  schema: "PUBLIC"
