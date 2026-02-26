@@ -60,7 +60,7 @@ NDCG@10
 0.287
 HitRate@10
 0.421
-📊 Retrieval Performance (FAISS)
+Retrieval Performance (FAISS)
 Metric
 Value
 Average Query Latency
