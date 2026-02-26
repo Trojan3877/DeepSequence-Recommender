@@ -1,28 +1,8 @@
-# Core
-numpy==1.26.4
-pandas==2.2.2
-scikit-learn==1.4.2
-pyyaml==6.0.1
+torch==2.2.2+cu121
+--extra-index-url https://download.pytorch.org/whl/cu121
 
-# Deep Learning
-tensorflow==2.15.0
-
-# API
-fastapi==0.110.0
-uvicorn==0.29.0
-
-# Retrieval
-faiss-cpu==1.8.0
-
-# Spark
-pyspark==3.5.1
-
-# Database
-snowflake-connector-python==3.10.0
-
-# Utilities
-tqdm==4.66.4
-python-dotenv==1.0.1
-
-# Testing
-pytest==8.2.0
+faiss-gpu
+fastapi
+uvicorn
+numpy
+prometheus-client
