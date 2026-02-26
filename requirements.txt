@@ -1,23 +1,28 @@
-# ================================
-# NetRecommender Requirements
-# Production-Grade ML System Stack
-# ================================
+# Core
+numpy==1.26.4
+pandas==2.2.2
+scikit-learn==1.4.2
+pyyaml==6.0.1
 
+# Deep Learning
+tensorflow==2.15.0
+
+# API
 fastapi==0.110.0
 uvicorn==0.29.0
 
-# Core ML + Math
-torch==2.2.0
-numpy==1.26.4
-pandas==2.2.1
-scikit-learn==1.4.0
-streamlit
+# Retrieval
+faiss-cpu==1.8.0
 
-# Utility + Config
-pyyaml==6.0.1
+# Spark
+pyspark==3.5.1
 
-# For evaluation + ranking
-tqdm==4.66.2
+# Database
+snowflake-connector-python==3.10.0
 
-# Optional (but helpful)
+# Utilities
+tqdm==4.66.4
 python-dotenv==1.0.1
+
+# Testing
+pytest==8.2.0
