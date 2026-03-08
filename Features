@@ -1,6 +1,0 @@
-features/
-├── feature_definitions.py
-├── offline_pipeline.py
-├── online_store.py
-├── feature_service.py
-└── README.md
