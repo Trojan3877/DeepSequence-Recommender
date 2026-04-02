@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deepsequence-recommender
+  labels:
+    app: deepsequence
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: deepsequence
+  template:
+    metadata:
+      labels:
+        app: deepsequence
+    spec:
+      containers:
+        - name: deepsequence
+          image: your-docker-registry/deepsequence-recommender:latest
+          ports:
+            - containerPort: 8000
+          env:
+            - name: SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: deepsequence-secrets
+                  key: secret-key
+            - name: REDIS_URL
+              value: "redis://deepsequence-redis:6379"
+          readinessProbe:
+            httpGet:
+              path: /recommendations/health
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /recommendations/health
+              port: 8000
+            initialDelaySeconds: 20
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "512Mi"
+            limits:
+              cpu: "1000m"
+              memory: "2Gi"
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
