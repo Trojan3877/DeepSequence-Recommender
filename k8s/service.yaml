@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: deepsequence-service
+  labels:
+    app: deepsequence
+spec:
+  selector:
+    app: deepsequence
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+  type: ClusterIP
