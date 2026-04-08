@@ -1,79 +1,56 @@
-![Architecture](https://img.shields.io/badge/architecture-microservices-critical)
-![Scalability](https://img.shields.io/badge/scalability-high-success)
-![Latency](https://img.shields.io/badge/latency-<50ms-brightgreen)
-![Observability](https://img.shields.io/badge/observability-enabled-blue)
-![Security](https://img.shields.io/badge/security-scanned-success)
-![CI](https://github.com/Trojan3877/DeepSequence-Recommender/actions/workflows/ci.yml/badge.svg)
+[![CI](https://github.com/Trojan3877/DeepSequence-Recommender/actions/workflows/ci.yml/badge.svg)](https://github.com/Trojan3877/DeepSequence-Recommender/actions/workflows/ci.yml)
+![Python](https://img.shields.io/badge/python-3.9%2B-blue.svg)
+![FastAPI](https://img.shields.io/badge/FastAPI-service-009688?logo=fastapi&logoColor=white)
 ![Docker](https://img.shields.io/badge/docker-ready-blue)
-![Kubernetes](https://img.shields.io/badge/k8s-ready-informational)
+![Kubernetes](https://img.shields.io/badge/k8s-manifests-informational)
+![Prometheus](https://img.shields.io/badge/metrics-prometheus-E6522C?logo=prometheus&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
 # DeepSequence Recommender
 
-A production-grade **deep learning sequence recommendation** service.  
-Built with the same enterprise architecture patterns as
-[TrojanChat](https://github.com/Trojan3877/TrojanChat) — horizontally
-scalable, observable, and secure.
+DeepSequence Recommender is a sequence-aware recommendation service built around a FastAPI application, a modular sequence-processing pipeline, and Prometheus-compatible instrumentation.
+
+This repository is designed to demonstrate production-style ML service design rather than a notebook-only recommender prototype.
+
+---
+
+## Overview
+
+This project focuses on the engineering side of recommendation systems:
+
+- serving recommendations through an API
+- separating routing, preprocessing, configuration, and modeling concerns
+- exposing service-level metrics for observability
+- supporting local development, container execution, and Kubernetes deployment
+- providing a cleaner foundation for future benchmarking and model evolution
+
+Instead of presenting recommendation logic only in notebooks, this repo frames the work as a runnable service.
+
+---
+
+## What is implemented today
+
+The current repository includes:
+
+- a FastAPI service entry point
+- startup-time model and processor initialization
+- sequence preprocessing and vocabulary handling
+- recommendation API routing
+- Prometheus metrics exposure through `/metrics`
+- Docker and Kubernetes deployment assets
+- automated tests and CI wiring referenced from the repository root
+
+This means a reviewer can inspect the repo as an application, not just a model artifact.
+
+---
 
 ## Architecture
 
-```
-Client (HTTP)
-      ↓
-FastAPI  →  BiLSTM + Attention model  →  top-k item recommendations
-      ↓
-  /metrics  →  Prometheus  →  Grafana
-```
-
-Full design details: [`docs/architecture.md`](docs/architecture.md)
-
-## Quick Start
-
-```bash
-# 1. Clone and install
-git clone https://github.com/Trojan3877/DeepSequence-Recommender.git
-cd DeepSequence-Recommender
-python -m venv venv && source venv/bin/activate
-pip install -r requirements.txt
-
-# 2. Configure
-cp .env.example .env
-# Edit .env with your SECRET_KEY
-
-# 3. Run locally
-uvicorn app.main:app --reload
-
-# 4. Call the API
-curl -X POST http://localhost:8000/recommendations/ \
-  -H "Content-Type: application/json" \
-  -d '{"user_id": "u1", "item_sequence": ["item_1","item_2","item_3"], "top_k": 5}'
-```
-
-## Docker
-
-```bash
-docker-compose up --build
-```
-
-## Kubernetes
-
-```bash
-kubectl apply -f k8s/deployment.yaml
-kubectl apply -f k8s/service.yaml
-kubectl apply -f k8s/hpa.yaml
-```
-
-## Running Tests
-
-```bash
-pytest tests/ -v
-```
-
-## Metrics
-
-`GET /metrics` — Prometheus scrape endpoint.  
-See [`docs/metrics.md`](docs/metrics.md) for the full metrics catalogue.
-
-## License
-
-MIT
+```text
+Client request
+    ↓
+FastAPI application
+    ↓
+Sequence processor → sequence model → top-k recommendations
+    ↓
+/metrics endpoint → Prometheus / monitoring stack
