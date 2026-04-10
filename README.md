@@ -1,5 +1,5 @@
 [![CI](https://github.com/Trojan3877/DeepSequence-Recommender/actions/workflows/ci.yml/badge.svg)](https://github.com/Trojan3877/DeepSequence-Recommender/actions/workflows/ci.yml)
-![Python](https://img.shields.io/badge/python-3.9%2B-blue.svg)
+![Python](https://img.shields.io/badge/python-3.11%2B-blue.svg)
 ![FastAPI](https://img.shields.io/badge/FastAPI-service-009688?logo=fastapi&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-demo-FF4B4B?logo=streamlit&logoColor=white)
 ![Docker](https://img.shields.io/badge/docker-ready-blue)

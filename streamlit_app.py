@@ -15,6 +15,8 @@ from app.core.config import settings
 from app.core.data_processor import SequenceProcessor
 from app.core.model import DeepSequenceModel
 
+DEMO_CATALOGUE_SIZE = 200
+
 
 # ---------------------------------------------------------------------------
 # Page config
@@ -36,7 +38,7 @@ st.set_page_config(
 def load_model() -> tuple[SequenceProcessor, DeepSequenceModel]:
     """Initialise processor and model with the demo catalogue."""
     processor = SequenceProcessor(max_length=settings.max_sequence_length)
-    demo_items = [[f"item_{i}" for i in range(200)]]
+    demo_items = [[f"item_{i}" for i in range(DEMO_CATALOGUE_SIZE)]]
     processor.fit(demo_items)
 
     model = DeepSequenceModel(
@@ -75,7 +77,7 @@ with st.sidebar:
 # Main pane
 st.subheader("Build your interaction sequence")
 
-available_items = [f"item_{i}" for i in range(200)]
+available_items = [f"item_{i}" for i in range(DEMO_CATALOGUE_SIZE)]
 selected_items: list[str] = st.multiselect(
     "Select items you have interacted with (in order):",
     options=available_items,
