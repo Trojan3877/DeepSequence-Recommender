@@ -21,3 +21,4 @@ black==26.3.1
 flake8==7.1.1
 mypy==1.11.2
 bandit==1.7.10
+streamlit>=1.35.0
