@@ -19,7 +19,6 @@ jobs:
         with:
           python-version: "3.11"
 
-      # Core caching strategy to speed up subsequent integration runs
       - name: Cache pip
         uses: actions/cache@v4
         with:
@@ -27,34 +26,29 @@ jobs:
           key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
           restore-keys: ${{ runner.os }}-pip-
 
-      # FIX 1: Explicitly install the tooling utilities alongside requirements
+      # Explicitly provisions all core testing, API dependencies, and framework requirements
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install flake8 black mypy bandit pytest
+          pip install flake8 black mypy bandit pytest fastapi httpx
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      # FIX 2: Dynamic fallbacks to prevent pipeline crashes if specific local test scripts/dirs don't exist yet
       - name: Lint (flake8)
         run: |
           flake8 src/ app/ tests/ app/recsys_control_room.py --max-line-length=100 || echo "Lint alerts detected, bypassing blocker."
 
-      # Checks formatting standards natively
       - name: Format check (black)
         run: |
           black --check src/ app/ tests/ app/recsys_control_room.py --line-length=100 || echo "Formatting variances detected."
 
-      # Ensures static type evaluation handles missing modules smoothly
       - name: Type check (mypy)
         run: |
           mypy src/ app/ --ignore-missing-imports || echo "Type checking structural alerts bypassed."
 
-      # Security scan for vulnerabilities
       - name: Security scan (bandit)
         run: |
           bandit -r src/ app/ -ll -q || echo "Security trace analysis logged."
 
-      # FIX 3: Safe testing execution that checks logic but safely handles missing mock data files
       - name: Run unit tests
         run: |
           if [ -f tests/test_recommender.py ]; then
