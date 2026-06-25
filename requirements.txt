@@ -11,3 +11,5 @@ onnxruntime>=1.17.0
 streamlit>=1.30.0
 matplotlib>=3.8.2
 seaborn>=0.13.2
+fastapi>=0.100.0
+httpx>=0.24.0
